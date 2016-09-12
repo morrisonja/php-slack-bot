@@ -11,6 +11,7 @@ class Bot {
     private $webserverPort = null;
     private $webserverAuthentificationToken = null;
     private $catchAllCommand = null;
+    protected $loop = null;
 
     public function setToken($token) {
         $this->params = array('token' => $token);
@@ -59,6 +60,7 @@ class Bot {
         $logger->addWriter($writer);
 
         $loop = \React\EventLoop\Factory::create();
+        $this->loop = $loop;
         $client = new \Devristo\Phpws\Client\WebSocket($this->wsUrl, $loop, $logger);
 
         $client->on("request", function($headers) use ($logger){
