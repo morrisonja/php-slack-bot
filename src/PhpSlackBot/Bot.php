@@ -83,6 +83,7 @@ class Bot {
             if (null !== $this->catchAllCommand) {
                 $command = $this->catchAllCommand;
                 $command->setClient($client);
+                $command->setLoop($loop);
                 $command->setContext($this->context);
                 $command->executeCommand($data, $this->context);
             }
@@ -90,6 +91,7 @@ class Bot {
                 $command = $this->getCommand($data);
                 if ($command instanceof Command\BaseCommand) {
                     $command->setClient($client);
+                    $command->setLoop($loop);
                     $command->setChannel($data['channel']);
                     $command->setUser($data['user']);
                     $command->setContext($this->context);
