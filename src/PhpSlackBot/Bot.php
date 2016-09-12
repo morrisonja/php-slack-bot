@@ -75,7 +75,7 @@ class Bot {
                 $logger->notice("Connected!");
         });
 
-        $client->on("message", function($message) use ($client, $logger){
+        $client->on("message", function($message) use ($client, $logger, $loop){
             $data = $message->getData();
             $logger->notice("Got message: ".$data);
             $data = json_decode($data, true);
