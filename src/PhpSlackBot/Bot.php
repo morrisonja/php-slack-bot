@@ -53,7 +53,7 @@ class Bot {
         if (!isset($this->params['token'])) {
             throw new \Exception('A token must be set. Please see https://my.slack.com/services/new/bot');
         }
-        $this->loadInternalCommands();
+#        $this->loadInternalCommands();
         $this->init();
         $logger = new \Zend\Log\Logger();
         $writer = new \Zend\Log\Writer\Stream("php://output");
